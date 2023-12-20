@@ -1,13 +1,16 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { Gutter } from '../../_components/Gutter'
 import { RenderParams } from '../../_components/RenderParams'
 import { getMeUser } from '../../_utilities/getMeUser'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import CreateAccountForm from './CreateAccountForm'
 
 import classes from './index.module.scss'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import logoBlack from '../../../../public/logo_black.png'
 
 export default async function CreateAccount() {
   await getMeUser({
@@ -17,11 +20,32 @@ export default async function CreateAccount() {
   })
 
   return (
-    <Gutter className={classes.createAccount}>
-      <h1>Create Account</h1>
-      <RenderParams />
-      <CreateAccountForm />
-    </Gutter>
+    <section className={classes.createAccount}>
+      <div className={classes.heroImg}></div>
+
+      {/* form */}
+      <div className={classes.formWrapper}>
+        <Link href="/" className={classes.logoContainer}>
+          <Image src={logoBlack} alt="logo" width={170} height={23} className={classes.logo} />
+        </Link>
+        <div className={classes.formContainer}>
+          <RenderParams className={classes.params} />
+
+          <Link href="/login" className={classes.backLink}>
+            <Image src="/assets/icons/arrow-left.svg" alt="left arrow" width={24} height={24} />
+            <p>Zurück</p>
+          </Link>
+
+          <div className={classes.formTitle}>
+            <h3>Konto erstellen</h3>
+          </div>
+
+          <p>Bitte geben Sie Ihre Details ein</p>
+
+          <CreateAccountForm />
+        </div>
+      </div>
+    </section>
   )
 }
 

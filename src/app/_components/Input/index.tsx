@@ -40,7 +40,7 @@ export const Input: React.FC<Props> = ({
             ? {
                 pattern: {
                   value: /\S+@\S+\.\S+/,
-                  message: 'Please enter a valid email',
+                  message: 'Bitte geben Sie eine gültige E-Mail-Adresse ein',
                 },
               }
             : {}),
@@ -50,7 +50,7 @@ export const Input: React.FC<Props> = ({
       {error && (
         <div className={classes.errorMessage}>
           {!error?.message && error?.type === 'required'
-            ? 'This field is required'
+            ? 'Dieses Feld ist erforderlich'
             : error?.message}
         </div>
       )}

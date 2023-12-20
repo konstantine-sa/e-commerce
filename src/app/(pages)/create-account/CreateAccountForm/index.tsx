@@ -13,6 +13,7 @@ import { useAuth } from '../../../_providers/Auth'
 import classes from './index.module.scss'
 
 type FormData = {
+  name: string
   email: string
   password: string
   passwordConfirm: string
@@ -47,7 +48,7 @@ const CreateAccountForm: React.FC = () => {
       })
 
       if (!response.ok) {
-        const message = response.statusText || 'There was an error creating the account.'
+        const message = response.statusText || 'Es gab einen Fehler bei der Kontoerstellung.'
         setError(message)
         return
       }
@@ -62,10 +63,13 @@ const CreateAccountForm: React.FC = () => {
         await login(data)
         clearTimeout(timer)
         if (redirect) router.push(redirect as string)
-        else router.push(`/account?success=${encodeURIComponent('Account created successfully')}`)
+        else router.push(`/`)
+        window.location.href = '/'
       } catch (_) {
         clearTimeout(timer)
-        setError('There was an error with the credentials provided. Please try again.')
+        setError(
+          'Es gab einen Fehler mit den bereitgestellten Anmeldedaten. Bitte versuchen Sie es erneut.',
+        )
       }
     },
     [login, router, searchParams],
@@ -73,47 +77,56 @@ const CreateAccountForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <p>
-        {`This is where new customers can signup and create a new account. To manage all users, `}
-        <Link href="/admin/collections/users">login to the admin dashboard</Link>
-        {'.'}
-      </p>
       <Message error={error} className={classes.message} />
       <Input
+        name="name"
+        label="Name"
+        required
+        register={register}
+        error={errors.name}
+        type="text"
+      />
+
+      <Input
         name="email"
-        label="Email Address"
+        label="E-Mail-Adresse"
         required
         register={register}
         error={errors.email}
         type="email"
       />
+
       <Input
         name="password"
         type="password"
-        label="Password"
+        label="Passwort"
         required
         register={register}
         error={errors.password}
       />
+
       <Input
         name="passwordConfirm"
         type="password"
-        label="Confirm Password"
+        label="Passwort bestätigen"
         required
         register={register}
-        validate={value => value === password.current || 'The passwords do not match'}
+        validate={value => value === password.current || 'Die Passwörter stimmen nicht überein.'}
         error={errors.passwordConfirm}
       />
+
       <Button
         type="submit"
-        label={loading ? 'Processing' : 'Create Account'}
+        label={loading ? 'Verarbeitung' : 'Konto erstellen'}
         disabled={loading}
         appearance="primary"
         className={classes.submit}
       />
-      <div>
-        {'Already have an account? '}
-        <Link href={`/login${allParams}`}>Login</Link>
+      <div className={classes.linkWrapper}>
+        {'Haben Sie bereits ein Konto?'}
+        <Link className={classes.link} href={`/login${allParams}`}>
+          Anmelden
+        </Link>
       </div>
     </form>
   )
