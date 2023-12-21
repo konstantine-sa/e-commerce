@@ -1,8 +1,17 @@
 @import '../../_css/common';
 
+.relatedProducts {
+  width: 100%;
+  padding-top: calc(var(--base) * 3);
+
+  @include small-break {
+    padding-top: calc(var(--base) * 2);
+  }
+}
+
 .introContent {
   position: relative;
-  margin-bottom: calc(var(--base) * 2);
+  // margin-bottom: calc(var(--base) * 1);
 
   @include mid-break {
     margin-bottom: var(--base);
@@ -11,48 +20,25 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  width: 100%;
-  gap: var(--base) 40px;
+ padding: 0;
+ grid-template-columns: repeat(5, minmax(20%, 1fr));
+ gap: 30px;
+ justify-items: space-between;
 
-  @include mid-break {
-    grid-template-columns: repeat(6, 1fr);
-    gap: calc(var(--base) / 2) var(--base);
-  }
+ @include mid-break {
+   gap: 20px;
+ }
+ 
+ @include small-break {
+   grid-template-columns: 100%;
+ }
 }
 
-.column {
-  grid-column-end: span 12;
-
-  @include mid-break {
-    grid-column-end: span 6;
-  }
+.title {
+  font-weight: 400;
+  margin-bottom: calc(var(--base) * 2);
 
   @include small-break {
-    grid-column-end: span 6;
-  }
-}
-
-.cols-half {
-  grid-column-end: span 6;
-
-  @include mid-break {
-    grid-column-end: span 6;
-  }
-
-  @include small-break {
-    grid-column-end: span 6;
-  }
-}
-
-.cols-thirds {
-  grid-column-end: span 3;
-
-  @include mid-break {
-    grid-column-end: span 6;
-  }
-
-  @include small-break {
-    grid-column-end: span 6;
+    margin-bottom: var(--base);
   }
 }

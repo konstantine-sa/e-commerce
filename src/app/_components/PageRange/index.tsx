@@ -9,8 +9,8 @@ const defaultLabels = {
 
 const defaultCollectionLabels = {
   products: {
-    singular: 'Product',
-    plural: 'Products',
+    singular: 'Produkt',
+    plural: 'Produkte',
   },
 }
 
@@ -43,10 +43,11 @@ export const PageRange: React.FC<{
 
   return (
     <div className={[className, classes.pageRange].filter(Boolean).join(' ')}>
-      {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}
+      {(typeof totalDocs === 'undefined' || totalDocs === 0) &&
+        'Die Suche hat keine Ergebnisse ergeben.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&
-        `Showing ${indexStart} - ${indexEnd} of ${totalDocs} ${totalDocs > 1 ? plural : singular}`}
+        `Zeige  ${indexStart} - ${indexEnd} von ${totalDocs} ${totalDocs > 1 ? plural : singular}`}
     </div>
   )
 }

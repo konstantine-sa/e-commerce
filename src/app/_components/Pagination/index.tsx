@@ -28,7 +28,7 @@ export const Pagination: React.FC<{
       </button>
       <div className={classes.pageRange}>
         <span className={classes.pageRangeLabel}>
-          Page {page} of {totalPages}
+          Seite {page} von {totalPages}
         </span>
       </div>
       <button
