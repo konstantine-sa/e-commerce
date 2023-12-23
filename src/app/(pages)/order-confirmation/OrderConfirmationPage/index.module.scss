@@ -3,5 +3,23 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
   gap: calc(var(--base) / 2);
+}
+
+.title {}
+
+.messageSuccess {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.orderId {
+  font-weight: 700;
+  font-size: 18px;
+
+  @include small-break {
+    font-size: 16px;
+  }
 }

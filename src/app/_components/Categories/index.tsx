@@ -4,7 +4,6 @@ import { Category } from '../../../payload/payload-types'
 import CategoryCard from './CategoryCard'
 
 const Categories = ({ categories }: { categories: Category[] }) => {
-  console.log(categories)
   return (
     <section className={classes.container}>
       <div className={classes.titleWrapper}>

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import classes from './index.module.scss'
 import Link from 'next/link'
-import { strict } from 'assert'
 import { Media } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 import Image from 'next/image'
