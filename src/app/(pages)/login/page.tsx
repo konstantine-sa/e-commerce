@@ -15,7 +15,7 @@ import logoBlack from '../../../../public/logo_black.png'
 
 export default async function Login() {
   await getMeUser({
-    validUserRedirect: `/account?warning=${encodeURIComponent('You are already logged in.')}`,
+    validUserRedirect: `/account?warning=${encodeURIComponent('Sie sind bereits angemeldet.')}`,
   })
 
   return (
@@ -46,7 +46,7 @@ export default async function Login() {
 
 export const metadata: Metadata = {
   title: 'Login',
-  description: 'Login or create an account to get started.',
+  description: 'Melden Sie sich an oder erstellen Sie ein Konto, um zu beginnen.',
   openGraph: mergeOpenGraph({
     title: 'Login',
     url: '/login',

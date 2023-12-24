@@ -20,8 +20,8 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
+      {user && <Link href="/account">Mein Konto</Link>}
       <CartLink />
-      {user && <Link href="/account">Account</Link>}
       {!user && (
         <Button
           el="link"
@@ -33,7 +33,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
           }}
         />
       )}
-      {user && <CartLink />}
     </nav>
   )
 }
