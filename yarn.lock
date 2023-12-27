@@ -1934,20 +1934,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@payloadcms/plugin-cloud@npm:^2.0.0":
-  version: 2.2.5
-  resolution: "@payloadcms/plugin-cloud@npm:2.2.5"
+"@payloadcms/plugin-cloud@npm:^2.2.6":
+  version: 2.2.6
+  resolution: "@payloadcms/plugin-cloud@npm:2.2.6"
   dependencies:
     "@aws-sdk/client-cognito-identity": ^3.289.0
     "@aws-sdk/client-s3": ^3.142.0
     "@aws-sdk/credential-providers": ^3.289.0
     "@aws-sdk/lib-storage": ^3.267.0
     amazon-cognito-identity-js: ^6.1.2
+    nodemailer: ^6.9.1
     resend: ^0.17.2
   peerDependencies:
-    nodemailer: ^6.9.0
     payload: ^1.8.2 || ^2.0.0
-  checksum: a36a2beeb0278fdece383e0d3764e6afb78ef5d4420fc5657a44e4361c5bda7b27b231455a912326def5c10e9c6fbd1adecb2de56f73429442f16574ee6bb827
+  checksum: 08506434c2617d7424aacbabdeb9779a970c73392ab4ec55408f188f5fd8bae87219d7c2a8957b845c053473d9406bd216421057a447caaddfa7241face4a723
   languageName: node
   linkType: hard
 
@@ -2018,7 +2018,7 @@ __metadata:
     "@payloadcms/bundler-webpack": ^1.0.0
     "@payloadcms/db-mongodb": ^1.0.0
     "@payloadcms/eslint-config": ^0.0.1
-    "@payloadcms/plugin-cloud": ^2.0.0
+    "@payloadcms/plugin-cloud": ^2.2.6
     "@payloadcms/plugin-nested-docs": ^1.0.8
     "@payloadcms/plugin-redirects": ^1.0.0
     "@payloadcms/plugin-seo": ^1.0.10
@@ -8629,6 +8629,13 @@ __metadata:
   version: 6.9.4
   resolution: "nodemailer@npm:6.9.4"
   checksum: 1a61039c9c6041ee9ed423c7fa3685cb300679f1ef8dcfd912fc58d9b8c429c34ac1187eebd4d86baf7158222f6e3a1ea2b4fd2a29630fb9ef0027cef46e90bb
+  languageName: node
+  linkType: hard
+
+"nodemailer@npm:^6.9.1":
+  version: 6.9.7
+  resolution: "nodemailer@npm:6.9.7"
+  checksum: 0cf66d27aed3bd2cbdff9939402cec3d2119c31b2b9ff4af3bcd59f48287ea75b90c0ce2cd9eb0df838164972cd25581b4b723c91fd673e2608bcb28445ccb1b
   languageName: node
   linkType: hard
 
