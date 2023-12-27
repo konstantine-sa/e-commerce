@@ -16,7 +16,7 @@ import classes from './index.module.scss'
 export default async function Order({ params: { id } }) {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view this order.',
+      'Sie müssen angemeldet sein, um Ihre Bestellungen anzuzeigen.',
     )}&redirect=${encodeURIComponent(`/order/${id}`)}`,
   })
 
@@ -46,15 +46,25 @@ export default async function Order({ params: { id } }) {
   return (
     <div>
       <h5>
-        {`Order`}
+        {`Bestellung Nummer: `}
         <span className={classes.id}>{` ${order.id}`}</span>
       </h5>
       <div className={classes.itemMeta}>
-        <p>{`ID: ${order.id}`}</p>
-        <p>{`Payment Intent: ${order.stripePaymentIntentID}`}</p>
-        <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
+        <p>
+          <span className={classes.span}>ID:</span>
+          {` ${order.id}`}
+        </p>
+        <p>
+          <span className={classes.span}>Zahlungsabsicht: </span>
+          {`${order.stripePaymentIntentID}`}
+        </p>
+        <p>
+          {' '}
+          <span className={classes.span}>Bestellt am: </span>
+          {` ${formatDateTime(order.createdAt)}`}
+        </p>
         <p className={classes.total}>
-          {'Total: '}
+          {'Gesamt: '}
           {new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'usd',

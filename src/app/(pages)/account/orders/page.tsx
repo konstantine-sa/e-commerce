@@ -15,7 +15,7 @@ import classes from './index.module.scss'
 export default async function Orders() {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view your orders.',
+      'Sie müssen angemeldet sein, um Ihre Bestellungen anzuzeigen.',
     )}&redirect=${encodeURIComponent('/orders')}`,
   })
 
@@ -52,9 +52,12 @@ export default async function Orders() {
         <ul className={classes.orders}>
           {orders?.map(order => (
             <li key={order.id} className={classes.order}>
-              <Link className={classes.item} href={`/account/orders/${order.id}`}>
+              <div className={classes.item}>
                 <div className={classes.itemContent}>
-                  <h6 className={classes.itemTitle}>{`Bestellung ${order.id}`}</h6>
+                  <Link
+                    href={`/account/orders/${order.id}`}
+                    className={classes.itemTitle}
+                  >{`Bestellung ${order.id}`}</Link>
                   <div className={classes.itemMeta}>
                     <p>
                       {'Gesamt: '}
@@ -75,7 +78,7 @@ export default async function Orders() {
                   el="link"
                   href={`/account/orders/${order.id}`}
                 />
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
