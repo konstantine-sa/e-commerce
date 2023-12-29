@@ -45,7 +45,7 @@ export default async function Orders() {
     <div>
       <h5>Meine Bestellungen</h5>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
-        <p className={classes.noOrders}>You have no orders.</p>
+        <p className={classes.noOrders}>Sie haben keine Bestellungen.</p>
       )}
       <RenderParams />
       {orders && orders.length > 0 && (

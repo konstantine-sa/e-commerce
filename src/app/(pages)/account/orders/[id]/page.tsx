@@ -65,9 +65,9 @@ export default async function Order({ params: { id } }) {
         </p>
         <p className={classes.total}>
           {'Gesamt: '}
-          {new Intl.NumberFormat('en-US', {
+          {new Intl.NumberFormat('de-De', {
             style: 'currency',
-            currency: 'usd',
+            currency: 'EUR',
           }).format(order.total / 100)}
         </p>
       </div>
@@ -114,7 +114,7 @@ export default async function Order({ params: { id } }) {
                         {title}
                       </Link>
                     </h6>
-                    <p>{`Quantity: ${quantity}`}</p>
+                    <p>{`Menge: ${quantity}`}</p>
                     <Price product={product} button={false} quantity={quantity} />
                   </div>
                 </div>
@@ -132,10 +132,10 @@ export default async function Order({ params: { id } }) {
 
 export async function generateMetadata({ params: { id } }): Promise<Metadata> {
   return {
-    title: `Order ${id}`,
-    description: `Order details for order ${id}.`,
+    title: `Bestellung ${id}`,
+    description: `Bestelldetails für die Bestellung ${id}.`,
     openGraph: mergeOpenGraph({
-      title: `Order ${id}`,
+      title: `Bestellung ${id}`,
       url: `/orders/${id}`,
     }),
   }

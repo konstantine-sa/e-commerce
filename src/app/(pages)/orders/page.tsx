@@ -17,7 +17,7 @@ import classes from './index.module.scss'
 export default async function Orders() {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view your orders.',
+      'Sie müssen angemeldet sein, um Ihre Bestellungen anzuzeigen.',
     )}&redirect=${encodeURIComponent('/orders')}`,
   })
 
@@ -48,7 +48,8 @@ export default async function Orders() {
 
   return (
     <Gutter className={classes.orders}>
-      <h1>Bestellungen</h1>
+      <h1 className={classes.sectionTitle}>Bestellungen:</h1>
+      <HR />
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
         <p className={classes.noOrders}>Sie haben keine Bestellungen.</p>
       )}
@@ -59,21 +60,27 @@ export default async function Orders() {
             <li key={order.id} className={classes.listItem}>
               <Link className={classes.item} href={`/orders/${order.id}`}>
                 <div className={classes.itemContent}>
-                  <h4 className={classes.itemTitle}>{`Order ${order.id}`}</h4>
+                  <h4 className={classes.itemTitle}>
+                    <span className={classes.itemTitleText}>Bestellung Nummer: </span>
+                    {`${order.id}`}
+                  </h4>
                   <div className={classes.itemMeta}>
-                    <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
                     <p>
-                      {'Total: '}
-                      {new Intl.NumberFormat('en-US', {
+                      <span className={classes.itemMetaTitle}>Bestellt am: </span>
+                      {`${formatDateTime(order.createdAt)}`}
+                    </p>
+                    <p>
+                      <span className={classes.itemMetaTitle}>Gesamt: </span>
+                      {new Intl.NumberFormat('de-DE', {
                         style: 'currency',
-                        currency: 'usd',
+                        currency: 'EUR',
                       }).format(order.total / 100)}
                     </p>
                   </div>
                 </div>
                 <Button
                   appearance="secondary"
-                  label="View Order"
+                  label="Bestellung anzeigen"
                   className={classes.button}
                   el="button"
                 />
@@ -84,7 +91,7 @@ export default async function Orders() {
         </ul>
       )}
       <HR />
-      <Button href="/account" appearance="primary" label="Go to account" />
+      <Button href="/account" appearance="primary" label="Zum Konto" />
     </Gutter>
   )
 }

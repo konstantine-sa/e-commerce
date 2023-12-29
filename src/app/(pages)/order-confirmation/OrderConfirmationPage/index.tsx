@@ -26,7 +26,7 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
         <Fragment>
           <Message error={error} />
           <p>
-            {`Your payment was successful but there was an error processing your order. Please contact us to resolve this issue.`}
+            {`Ihre Zahlung war erfolgreich, aber es gab einen Fehler bei der Verarbeitung Ihrer Bestellung. Bitte kontaktieren Sie uns, um dieses Problem zu klären.`}
           </p>
           <div className={classes.actions}>
             <Button

@@ -17,7 +17,7 @@ const priceFromJSON = (priceJSON): string => {
       const parsed = JSON.parse(priceJSON)?.data[0]
       const priceValue = parsed.unit_amount
       const priceType = parsed.type
-      price = `${parsed.currency === 'usd' ? '$' : ''}${(priceValue / 100).toFixed(2)}`
+      price = `${parsed.currency === 'eur' ? '€' : ''}${(priceValue / 100).toFixed(2)}`
       if (priceType === 'recurring') {
         price += `/${
           parsed.recurring.interval_count > 1
@@ -69,7 +69,7 @@ export const Card: React.FC<{
   return (
     <Link href={href} className={[classes.card, className].filter(Boolean).join(' ')}>
       <div className={classes.mediaWrapper}>
-        {!metaImage && <div className={classes.placeholder}>No image</div>}
+        {!metaImage && <div className={classes.placeholder}>Kein Bild</div>}
         {metaImage && typeof metaImage !== 'string' && (
           <Media imgClassName={classes.image} resource={metaImage} fill />
         )}
